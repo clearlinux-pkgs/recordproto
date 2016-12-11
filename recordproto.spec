@@ -4,7 +4,7 @@
 #
 Name     : recordproto
 Version  : 1.14.2
-Release  : 7
+Release  : 8
 URL      : http://xorg.freedesktop.org/releases/individual/proto/recordproto-1.14.2.tar.bz2
 Source0  : http://xorg.freedesktop.org/releases/individual/proto/recordproto-1.14.2.tar.bz2
 Summary  : Record extension headers
@@ -23,6 +23,7 @@ actions in the X Window System.
 %package dev
 Summary: dev components for the recordproto package.
 Group: Development
+Provides: recordproto-devel
 
 %description dev
 dev components for the recordproto package.
@@ -40,10 +41,15 @@ doc components for the recordproto package.
 %setup -q -n recordproto-1.14.2
 
 %build
+export LANG=C
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %check
+export LANG=C
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
@@ -58,7 +64,7 @@ rm -rf %{buildroot}
 /usr/include/X11/extensions/recordconst.h
 /usr/include/X11/extensions/recordproto.h
 /usr/include/X11/extensions/recordstr.h
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/pkgconfig/recordproto.pc
 
 %files doc
 %defattr(-,root,root,-)
