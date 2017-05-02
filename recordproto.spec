@@ -4,7 +4,7 @@
 #
 Name     : recordproto
 Version  : 1.14.2
-Release  : 9
+Release  : 10
 URL      : http://xorg.freedesktop.org/releases/individual/proto/recordproto-1.14.2.tar.bz2
 Source0  : http://xorg.freedesktop.org/releases/individual/proto/recordproto-1.14.2.tar.bz2
 Summary  : Record extension headers
